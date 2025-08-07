@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://clv4ucr4psrln"]
+
+[ext_resource type="PackedScene" uid="uid://bkxgrcgrclt4r" path="res://test/cartoon boy.glb" id="1_s0yyf"]
+[ext_resource type="Script" path="res://GeneralSkeleton.gd" id="2_o6ljp"]
+
+[node name="cartoon boy" instance=ExtResource("1_s0yyf")]
+
+[node name="Am male cartoon_Rigify" parent="." index="0"]
+script = ExtResource("2_o6ljp")
+
+[node name="Skeleton3D" parent="Am male cartoon_Rigify" index="1"]
+transform = Transform3D(0.999627, 0.0232612, -0.0142768, -0.0230786, 0.999651, 0.0128249, 0.0145701, -0.0124907, 0.999816, 0, 0, 0)

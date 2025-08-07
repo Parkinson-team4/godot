@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmv1w7it3ix7d"]
+
+[ext_resource type="PackedScene" uid="uid://dn2hm8u2t3x7t" path="res://es/uploads_files_4012832_shapespark-example-room.gltf" id="1_d1ujk"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="2_2ii4g"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="uploads_files_4012832_shapespark-example-room" parent="." instance=ExtResource("1_d1ujk")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("2_2ii4g")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4j0qa7ha87g5"]
+
+[ext_resource type="PackedScene" uid="uid://04hvnu7vf6rj" path="res://es/uploads_files_4359726_city+2.glb" id="1_nf67v"]
+[ext_resource type="Script" path="res://player.gd" id="2_miltu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jx38f"]
+size = Vector3(100, 0.01, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24fmu"]
+size = Vector3(100, 4.2, 100)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jicn3"]
+radius = 0.15
+height = 0.6
+
+[node name="uploads_files_4359726_city+2" instance=ExtResource("1_nf67v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="Plane" parent="." index="3"]
+transform = Transform3D(0.741715, 0, 0, 0, 1, 0, 0, 0, 1, 8.838, 4.091, 0)
+
+[node name="Floor" type="StaticBody3D" parent="." index="1298"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+mesh = SubResource("BoxMesh_jx38f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_24fmu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1299"]
+light_color = Color(1, 1, 0.901961, 1)
+light_energy = 2.0
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." index="1300"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7, 4.2, 3.6)
+script = ExtResource("2_miltu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+shape = SubResource("CapsuleShape3D_jicn3")
+
+[node name="Head" type="Node3D" parent="CharacterBody3D/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/CollisionShape3D/Head" index="0"]
+transform = Transform3D(0.724954, 0, 0.688798, 0, 1, 0, -0.688798, 0, 0.724954, 0, 0.1, 0)
+
+[node name="SpawnPoint" type="Marker3D" parent="." index="1301"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7, 3, 3.6)

@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://b20yn76yl4dir"]
+
+[ext_resource type="PackedScene" uid="uid://dn2hm8u2t3x7t" path="res://es/uploads_files_4012832_shapespark-example-room.gltf" id="1_0pc7w"]
+[ext_resource type="Script" path="res://Door.gd" id="2_y34x8"]
+[ext_resource type="Script" path="res://FirstPersonPlayer.gd" id="3_g66fv"]
+[ext_resource type="Script" path="res://SmartLightm.gd" id="4_pxsoe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_48qd5"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_txuj2"]
+height = 1.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h434d"]
+size = Vector3(100, 0.1, 100)
+
+[node name="uploads_files_4012832_shapespark-example-room" instance=ExtResource("1_0pc7w")]
+
+[node name="Area3D" type="Area3D" parent="Door_02" index="0"]
+script = ExtResource("2_y34x8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_02/Area3D" index="0"]
+transform = Transform3D(1, -7.10543e-15, -6.39464e-15, 0, 1, 1.27898e-13, -7.29489e-14, -1.42109e-14, 1, -0.2, 0, 0)
+shape = SubResource("BoxShape3D_48qd5")
+
+[node name="FirstPersonPlayer" type="CharacterBody3D" parent="." index="65"]
+script = ExtResource("3_g66fv")
+walk_speed = null
+run_speed = null
+jump_velocity = null
+mouse_sensitivity = null
+camera_smooth = null
+head_bob_enabled = null
+head_bob_amplitude = null
+head_bob_frequency = null
+interaction_range = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FirstPersonPlayer" index="0"]
+shape = SubResource("CapsuleShape3D_txuj2")
+
+[node name="Head" type="Node3D" parent="FirstPersonPlayer" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+
+[node name="Camera3D" type="Camera3D" parent="FirstPersonPlayer/Head" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+
+[node name="InteractionRaycast" type="RayCast3D" parent="FirstPersonPlayer/Head/Camera3D" index="0"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="66"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_h434d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" index="1"]
+
+[node name="SmartLight" type="Node3D" parent="." index="67"]
+script = ExtResource("4_pxsoe")
+local_test_mode = null
+debug_mode = null
+device_connection_string = null
+device_id = null
+
+[node name="LightBulbMesh" type="MeshInstance3D" parent="SmartLight" index="0"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SmartLight" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -4)
+visible = false
+light_energy = 2.131
+light_indirect_energy = 1.485
+
+[node name="HTTPRequest" type="HTTPRequest" parent="SmartLight" index="2"]
+
+[node name="C2DHTTPRequest" type="HTTPRequest" parent="SmartLight" index="3"]
